@@ -51,7 +51,7 @@ public class DoubleLinkedList {
         DoubleNode next = head;
         int index = 0;
         while (next != null) {
-            if (next.getContent() == content) return index;
+            if (next.getContent().equals(content)) return index;
             ++index;
             next = next.getSucc();
         }
@@ -71,6 +71,9 @@ public class DoubleLinkedList {
         }
         DoubleNode newNode = new DoubleNode(content);
         DoubleNode next = getNode(index);
+        if (next.getPred() != null) {
+            next.getPred().setSucc(newNode);
+        }
         next.setPred(newNode);
         if (index == 0) head = newNode;
     }
@@ -109,10 +112,8 @@ public class DoubleLinkedList {
         if (index == 0)              head = toDeleteSucc;
         if (index == originalSize-1) tail = toDeletePred;
 
-        // Es muss nur eine von beiden Methoden aufgerufen werden (oder keine falls Liste nur
-        // ein Element hatte)
         if (toDeleteSucc != null) toDeleteSucc.setPred(toDeletePred);
-        else if (toDeletePred != null) toDeletePred.setSucc(null); // toDeleteSucc ist ja null
+        if (toDeletePred != null) toDeletePred.setSucc(toDeleteSucc);
 
         return true;
     }

@@ -9,8 +9,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public final class InfixToUPN {
 
-    static int curToken = 0;
-
     public static Queue<String> process(String line) {
         //1. Lege eine Queue und einen Stack an.
         LinkedBlockingQueue<String> queue = new LinkedBlockingQueue<>();

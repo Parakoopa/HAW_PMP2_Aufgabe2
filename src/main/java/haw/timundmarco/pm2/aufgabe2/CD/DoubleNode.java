@@ -1,6 +1,6 @@
 package haw.timundmarco.pm2.aufgabe2.CD;
 
-public class DoubleNode {
+class DoubleNode {
 
     private DoubleNode pred;
     private DoubleNode succ;
@@ -11,7 +11,7 @@ public class DoubleNode {
      * Beginn „zeigen“ succ und pred auf null.
      * @param content
      */
-    public DoubleNode(Object content) {
+    DoubleNode(Object content) {
         this.content = content;
     }
 
@@ -19,7 +19,7 @@ public class DoubleNode {
      * Liefert den Inhalt eines Knotens.
      * @return
      */
-    public Object getContent() {
+    Object getContent() {
         return content;
     }
 
@@ -27,7 +27,7 @@ public class DoubleNode {
      * Liefert den Vorgängerknoten.
      * @return
      */
-    public DoubleNode getPred() {
+    DoubleNode getPred() {
         return pred;
     }
 
@@ -35,7 +35,7 @@ public class DoubleNode {
      * Liefert den Nachfolgerknoten.
      * @return
      */
-    public DoubleNode getSucc() {
+    DoubleNode getSucc() {
         return succ;
     }
 
@@ -45,10 +45,8 @@ public class DoubleNode {
      * null sein.
      * @param node
      */
-    public void setPred(DoubleNode node) {
-        if (pred != null) pred.succ = node;
+    void setPred(DoubleNode node) {
         if (node != null) {
-            node.pred = pred;
             node.succ = this;
         }
         pred = node;
@@ -61,9 +59,7 @@ public class DoubleNode {
      * @param node
      */
     void setSucc(DoubleNode node) {
-        if (succ != null) succ.pred = node;
         if (node != null) {
-            node.succ = succ;
             node.pred = this;
         }
         succ = node;
